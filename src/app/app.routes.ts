@@ -7,6 +7,7 @@ import { AppHelpComponent } from './app-help/app-help.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '' },
   { path: 'home', component: AppHomeComponent },
   { path: 'login-signup', component: AppLoginSignupComponent },
   { path: 'explore', component: ExploreComponent },
