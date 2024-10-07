@@ -1,0 +1,65 @@
+@mixin deep {
+    ::ng-deep {
+      @content;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: black; /* Set background color to black */
+  }
+  p-button {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+    min-width: 120px;
+    background-color: black; /* Set button background color to black */
+    color: white; /* Set button text color to white */
+    border: none; /* Remove any default borders */
+  }
+  p-button:hover {
+    background-color: white; /* Slightly lighter black on hover */
+  }
+  
+  p-button .ui-button-text {
+    color: white; /* Ensure the text inside PrimeNG button is white */
+  }
+  .button-container p-button:first-child {
+    justify-self: flex-start; /* Home button on the left */
+  }
+  
+  .button-container p-button:last-child {
+    justify-self: flex-end; /* Help button on the right */
+  }
+
+
+::ng-deep nav .button-container p-button .p-button {
+    background-color: black !important;
+    color: white !important;
+    border: none !important;
+}
+
+::ng-deep nav .button-container p-button .p-button:hover {
+    background-color: white !important;
+    color: black !important;
+}
+
+
+      
+    //   @include deep {
+    //     .p-button {
+    //       color: whitesmoke;
+    //       background-color: black;
+    //       border-radius: 0px;
+    //       display: flex;
+    //       border-color:black;
+    //     }
+    //   }
+      
+
+

@@ -1,16 +1,15 @@
 import { Routes } from '@angular/router';
-import { AppHomeComponent } from './app-home/app-home.component';
-import { AppLoginSignupComponent } from './app-login-signup/app-login-signup.component';
-import { ExploreComponent } from './home/explore/explore.component';
-import { AppFindYourVoyageComponent } from './app-find-your-voyage/app-find-your-voyage.component';
-import { AppHelpComponent } from './app-help/app-help.component';
+import { HomeComponent } from './app/home/home.component';
+import { LoginComponent } from './app/login/login.component';
+import { ExploreComponent } from './app/explore/explore.component';
+import { FindYourVoyageComponent } from './app/find-your-voyage/find-your-voyage.component';
+import { AskComponent } from './app/ask/ask.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
-  { path: 'home', component: AppHomeComponent },
-  { path: 'login-signup', component: AppLoginSignupComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'explore', component: ExploreComponent },
-  { path: 'find-your-voyage', component: AppFindYourVoyageComponent },
-  { path: 'help', component: AppHelpComponent }
+  { path: 'find-your-voyage', component: FindYourVoyageComponent },
+  { path: 'ask', component: AskComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: 'home' }  // Catch-all route
 ];

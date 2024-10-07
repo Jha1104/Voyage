@@ -1,0 +1,69 @@
+<div class="login-page">
+    <div class="grid headerClass">
+      <div class="sm:col-1.5">
+        <strong class="title-header">Login / Sign-Up</strong>
+      </div>
+      <div class="accordion">
+        <div class="search-container">
+          <div class="filterheading">
+            <div class="rectangle-header">
+              <span class="login-text">Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="login-signup-fields">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="p-field-user">
+              <label for="username">Username</label>
+              <input pInputText id="username" formControlName="username" placeholder="Enter Username" />
+            </div>
+            <div class="p-field-password">
+              <label for="password">Password</label>
+              <input pInputText id="password" type="password" formControlName="password" placeholder="Enter Password" />
+            </div>
+            <div class="buttons">
+              <p-button class="submit-btn" label="Submit" type="submit"></p-button>
+              <p-button class="cancel-btn" label="Cancel" type="button" (click)="clearForm()"></p-button>
+            </div>
+  
+            <!-- New Div for "Don't Have an Account? Sign Up Here" line -->
+            <div class="signup-prompt">
+              Don't have an account? <a (click)="onSignUp()">SignUp</a>
+            </div>
+          </form>
+        </div>
+  
+        <!-- SignUp form (conditionally displayed) -->
+        <div  *ngIf="showSignupForm"  class="signup-form">
+          <h3>SignUp</h3>
+          <form [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit()">
+            <div class="p-field-signup">
+              <label for="p-field-user">Full Name</label>
+              <input pInputText id="fullname" formControlName="fullName" placeholder="Enter Full Name" />
+            </div>
+            <div class="p-field-user">
+              <label for="username">Username</label>
+              <input pInputText id="username" formControlName="signUpUsername" placeholder="Enter Username" />
+            </div>
+            <div class="p-field-user">
+              <label for="password">Password</label>
+              <input pInputText id="password" type="password" formControlName="signUpPassword" placeholder="Enter Password" />
+            </div>
+            <div class="p-field-user">
+              <label for="retypepassword">Re-type Password</label>
+              <input pInputText id="retypepassword" type="password" formControlName="retypePassword" placeholder="Re-type Password" />
+            </div>
+            <div class="p-field-user">
+              <label for="emailormobile">Email or Mobile Number</label>
+              <input pInputText id="emailormobile" formControlName="emailOrMobile" placeholder="Enter Email or Mobile" />
+            </div>
+            <div class="signup-buttons">
+              <p-button label="Submit" type="submit"></p-button>
+              <p-button label="Cancel" type="button" (click)="cancelSignup()"></p-button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
