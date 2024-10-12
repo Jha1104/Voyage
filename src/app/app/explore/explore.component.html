@@ -1,1 +1,70 @@
-<p>explore works!</p>
+<div class="header-container">
+    <img src="assets/images/photo7.jfif" alt="Header Image" class="header-img">
+    <img src="assets/images/photo6.jfif" alt="Header Image" class="header-img">
+  </div>
+  
+  <div class="search-container">
+    <!-- State Dropdown -->
+
+    <p-multiSelect [options]="stateOptions" [(ngModel)]="selectedState" (onChange)="onStateChange($event.value)" [placeholder]="'State of Travel'"></p-multiSelect>
+    
+    <!-- Places Selection -->
+    <p-multiSelect [options]="placeOptions" [(ngModel)]="selectedPlace" [placeholder]="'Places to Visit'"></p-multiSelect>
+    
+    <!-- Transport and Package Selection -->
+    <p-multiSelect [options]="transportOptions" [(ngModel)]="selectedTransport" [placeholder]="'Select Transport'"></p-multiSelect>
+    
+    <p-multiSelect [options]="packageOptions" [(ngModel)]="selectedPackage" [placeholder]="'Select Package'"></p-multiSelect>
+    
+    <!-- Check-in and Check-out Date Selection -->
+    <p-calendar [(ngModel)]="selectedCheckIn" [showIcon]="true" placeholder="Check-in Date"></p-calendar>
+    <p-calendar [(ngModel)]="selectedCheckOut" [showIcon]="true" placeholder="Check-out Date"></p-calendar>
+  
+    <!-- Search Button -->
+    <button pButton type="button" label="Search" (click)="onSearch()"></button>
+    <button pButton type="button" label="Cancel"></button>
+  </div>
+
+  <!-- explore.component.html -->
+
+<div class="search-results-container">
+    <!-- Headers -->
+    <div class="result-header">
+      <div>Serial No.</div>
+      <div>Location</div>
+      <div>Place of Travel</div>
+      <div>Mode of Transport</div>
+      <div>Selected Package</div>
+      <div>Number of Days</div>
+      <div>Action</div>
+    </div>
+  
+    <!-- Dynamic Result Rows -->
+    <div class="search-results-section">
+        <div *ngFor="let result of searchResults; let i = index" class="result-row search-result">
+          <div>{{ i + 1 }}</div>
+          <div>{{ result.currentLocation }}</div>
+          <div>{{ result.placeToVisit }}</div>
+          <div>{{ result.transportMode }}</div>
+          <div>{{ result.packageRange }}</div>
+          <div>{{ result.numberOfDays }}</div>
+          <div><a href="#">See voyage details</a></div>
+        </div>
+      </div>
+      
+      <!-- Random Results Below with a Margin -->
+      <div class="random-results-section">
+        <div class="random-header">Suggestions:</div>
+        <div *ngFor="let random of randomResults; let i = index" class="result-row random-result">
+          <div>{{ searchResults.length + i + 1 }}</div>
+          <div>{{ random.currentLocation }}</div>
+          <div>{{ random.placeToVisit }}</div>
+          <div>{{ random.transportMode }}</div>
+          <div>{{ random.packageRange }}</div>
+          <div>{{ random.numberOfDays }}</div>
+          <div><a href="#">See voyage details</a></div>
+        </div>
+      </div>
+      
+  
+  

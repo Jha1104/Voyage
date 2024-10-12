@@ -1,237 +1,198 @@
 .login-page {
     margin: 0 4em;
-  
-}
-  .grid {
-    padding-top: 2rem;
-  }
-  
-  .title-header {
-    color: green;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 45px;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: 1.15;
-    letter-spacing: -0.98px;
-  }
-  
-  .rectangle-header {
-    width: 3px;
-    height: 31px;
-    margin: 3px 12px 4px;
-    margin-left: 2rem;
-    margin-top: 2.5rem;
-    background-color: #e20101;
-  }
-  
-  .accordion {
-    width: 100%;
-    background-color: lavender;
-    padding: 2%;
+    position: relative;
+    background-image: url('/assets/images/photo3.jpg');
+    /* Add your background image */
+    background-size: cover; /* Cover the entire element */
+    background-position: center; /* Center the background image */
+    padding: 2rem; /* Optional: add padding if needed */
 
-    .login-signup-fields {
-        margin-top: 3rem;
+    .grid {
+        padding-top: 2rem;
+        position: relative; /* Required for absolute positioning of signup form */
+        background-color: rgba(255, 255, 255, 0.8); /* Optional: add a semi-transparent background for contrast */
+        border-radius: 8px; /* Optional: rounded corners */
+        padding: 2rem; /* Optional: add padding if needed */
+    }
 
-        .p-field-user,
-        .p-field-password {
-            margin-left: 2rem;
-        }
+    .title-header {
+        color: green;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 45px;
+        font-weight: normal;
+        font-stretch: normal;
+        line-height: 1.15;
+        letter-spacing: -0.98px;
+    }
 
-        .p-inputtext {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-            padding-right: 4rem;
-        }
+    .rectangle-header {
+        width: 3px;
+        height: 31px;
+        margin: 3px 12px 4px;
+        margin-left: 2rem;
+        margin-top: 2.5rem;
+        background-color: #e20101;
+    }
 
-        .buttons {
-            margin-left: 9.3rem;
-            margin-top: 1rem;
+    .accordion {
+        width: 100%;
+        padding: 2%;
+        position: relative; /* Added for positioning */
 
-            /* Styles for Submit button */
-            ::ng-deep .submit-btn .p-button {
-                margin-right: 4rem;
-                background-color: rgba(5, 107, 5, 0.842);
-                border-color: darkgreen;
-                border: 0px;
+        .login-signup-fields {
+            margin-top: 3rem;
+
+            .p-field-user,
+            .p-field-password {
+                margin-left: 2rem;
             }
 
-            /* Styles for Cancel button */
-            ::ng-deep .cancel-btn .p-button {
-                background-color: red;
-                border-color: red;
-                border: 0px;
+            .p-inputtext {
+                margin-left: 2rem;
+                margin-bottom: 1rem;
+                padding-right: 4rem;
+            }
 
-                /* Change text color to white */
-                .p-button-label {
-                    color: white;
+            .buttons {
+                margin-left: 9.3rem;
+                margin-top: 1rem;
+
+                ::ng-deep .submit-btn .p-button {
+                    margin-right: 4rem;
+                    background-color: rgba(5, 107, 5, 0.842);
+                    border-color: darkgreen;
+                    border: 0px;
+                }
+
+                ::ng-deep .cancel-btn .p-button {
+                    background-color: red;
+                    border-color: red;
+                    border: 0px;
+
+                    .p-button-label {
+                        color: white;
+                    }
                 }
             }
-        }
 
-        .signup-prompt {
-            margin-top: 2rem;
-            margin-left: 10.3rem;
-            font-size: 15px;
-        }
+            .signup-prompt {
+                margin-top: 2rem;
+                margin-left: 10.3rem;
+                font-size: 15px;
+            }
 
-        .signup-prompt a {
-            color: #4730c5;
-            text-decoration: none;
-            font-weight: 500;
-        }
+            .signup-prompt a {
+                color: #4730c5;
+                text-decoration: none;
+                font-weight: 500;
+            }
 
-        .signup-prompt a:hover {
-            text-decoration: underline;
-            cursor: pointer;
+            .signup-prompt a:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
     }
-}
 
-/* Signup Form Specific Styling */
-.signup-form {
-    margin: 0; /* Reset margin to prevent overflow */
-    padding: 1em;
-    background-color: white; /* Background color for better visibility */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
-    max-width: 100%; /* Ensure the form fits within the accordion width */
-}
-
-/* Ensure consistent font size and input width for all fields */
-.signup-form .p-field-signup,
-.signup-form .p-field-user {
-    margin-bottom: 1.5rem; /* Adds spacing between form fields */
-}
-
-.signup-form label {
-    font-size: 14px; /* Set consistent font size for all labels */
-    font-weight: 500;
-}
-
-.signup-form input {
-    width: 100%; /* Set consistent width for input fields */
-    padding: 0.5rem; /* Add padding for input fields */
-    font-size: 14px; /* Set consistent font size for input text */
-}
-
-.signup-form .signup-buttons {
-    margin-top: 1.5rem; /* Space above the buttons */
-    display: flex;
-    justify-content: space-between; /* Space out the buttons */
-}
-
-.signup-form .p-button {
-    width: 48%; /* Make the buttons take up equal width */
-}
-  
-  
-  .login-text {
-    width: 100%;
-    padding: 2%;
-    font-size: 28px;
-    font-weight: 500;
-    display: flex;
-    margin-left: 2rem;
-  }
-  
-  .login-signup-fields {
-    margin-top: 3rem;
-  
-    .p-field-user,
-    .p-field-password {
-      margin-left: 2rem;
-    }
-  
-    .p-inputtext {
-      margin-left: 2rem;
-      margin-bottom: 1rem;
-      padding-right: 4rem;
-    }
-  
-    .buttons {
-      margin-left: 9.3rem;
-      margin-top: 1rem;
-  
-      // Styles for Submit button
-      ::ng-deep .submit-btn .p-button {
-        margin-right: 4rem;
-        background-color: rgba(5, 107, 5, 0.842);
-        border-color: darkgreen;
-        border: 0px;
-      }
-  
-      // Styles for Cancel button
-      ::ng-deep .cancel-btn .p-button {
-        background-color: red;
-        border-color: red;
-        border: 0px;
-  
-        // Change text color to white
-        .p-button-label {
-          color: white;
-        }
-      }
-    }
-    .signup-prompt {
-        margin-top: 2rem;
-        margin-left: 10.3rem;
-        font-size: 15px;
-        
-    }
-    
-    .signup-prompt a {
-        color: #4730c5;
-        text-decoration: none;
+    .login-text {
+        width: 100%;
+        padding: 2%;
+        font-size: 28px;
         font-weight: 500;
-       
+        display: flex;
+        margin-left: 2rem;
     }
-    
-    .signup-prompt a:hover {
-        text-decoration: underline;
-        cursor: pointer;
+
+    .background-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+        z-index: 9;
+        backdrop-filter: blur(5px); /* Blur the background */
     }
-      
-  }
 
-  /* Signup Form Specific Styling */
-.signup-form {
-    position: absolute;
-    right: 0; /* Aligns the form to the right */
-    top: 26%; /* Adjust this value to position vertically */
-    width: 510px; /* Set the width of the sign-up form */
-    padding: 1em;
-    background-color: white; /* Background color for better visibility */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add some shadow for depth */
-    margin-right: 9rem;
+    .signup-form {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: 8px;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    .signup-form h3 {
+        font-size: 20px;
+    }
+
+    .signup-form .p-field-signup {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.2rem;
+    }
+
+    .signup-form label {
+        font-size: 14px;
+        width: 40%;
+        margin-right: 10px;
+    }
+
+    .signup-form input {
+        flex: 1;
+        padding: 0.5rem;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .signup-form .signup-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+
+    .signup-form p-button {
+        font-size: 14px;
+    }
+
+    .p-field-signup,
+    .p-field-user {
+        margin-bottom: 0.5rem;
+    }
+
+    .error input {
+        border: 1px solid red;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 0.5rem;
+    }
+
+    .signup-buttons {
+
+        ::ng-deep .submit-sign-btn .p-button {
+            background-color: rgba(5, 107, 5, 0.842);
+            border-color: darkgreen;
+            border: 0px;
+        }
+
+        ::ng-deep .cancel-sign-btn .p-button {
+            background-color: red;
+            border-color: red;
+            border: 0px;
+
+            .p-button-label {
+                color: white;
+            }
+        }
+    }
 }
-
-/* Ensure consistent font size and input width for all fields */
-.signup-form .p-field-signup,
-.signup-form .p-field-user {
-    margin-bottom: 1.5rem; /* Adds spacing between form fields */
-}
-
-.signup-form label {
-    font-size: 14px; /* Set consistent font size for all labels */
-    font-weight: 500;
-}
-
-.signup-form input {
-    width: 100%; /* Set consistent width for input fields */
-    padding: 0.5rem; /* Add padding for input fields */
-    font-size: 14px; /* Set consistent font size for input text */
-}
-
-.signup-form .signup-buttons {
-    margin-top: 1.5rem; /* Space above the buttons */
-    display: flex;
-    justify-content: space-between; /* Space out the buttons */
-}
-
-.signup-form .p-button {
-    width: 48%; /* Make the buttons take up equal width */
-}
-
-
-
-  

@@ -3,63 +3,95 @@
       <div class="sm:col-1.5">
         <strong class="title-header">Login / Sign-Up</strong>
       </div>
-      <div class="accordion">
-        <div class="search-container">
-          <div class="filterheading">
-            <div class="rectangle-header">
-              <span class="login-text">Login</span>
+  
+      <div class="forms-container">
+        <!-- Login Form -->
+        <div class="accordion">
+          <div class="search-container">
+            <div class="filterheading">
+              <div class="rectangle-header">
+                <span class="login-text">Login</span>
+              </div>
             </div>
           </div>
+          <div class="login-signup-fields">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="p-field-user">
+                <label for="username">Username</label>
+                <input pInputText id="username" formControlName="username" placeholder="Enter Username" />
+                <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['invalidUsername']" class="error-message">
+                  Invalid Username.
+                </div>
+              </div>
+              <div class="p-field-password">
+                <label for="password">Password</label>
+                <input pInputText id="password" type="password" formControlName="password" placeholder="Enter Password" />
+                <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['invalidPassword']" class="error-message">
+                  Invalid Password
+                </div>
+              </div>
+              <div class="buttons">
+                <p-button class="submit-btn" label="Submit" type="submit"></p-button>
+                <p-button class="cancel-btn" label="Cancel" type="button" (click)="clearForm()"></p-button>
+              </div>
+              <div class="signup-prompt">
+                Don't have an account? <a (click)="onSignUp()">SignUp</a>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="login-signup-fields">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="p-field-user">
-              <label for="username">Username</label>
-              <input pInputText id="username" formControlName="username" placeholder="Enter Username" />
-            </div>
-            <div class="p-field-password">
-              <label for="password">Password</label>
-              <input pInputText id="password" type="password" formControlName="password" placeholder="Enter Password" />
-            </div>
-            <div class="buttons">
-              <p-button class="submit-btn" label="Submit" type="submit"></p-button>
-              <p-button class="cancel-btn" label="Cancel" type="button" (click)="clearForm()"></p-button>
-            </div>
   
-            <!-- New Div for "Don't Have an Account? Sign Up Here" line -->
-            <div class="signup-prompt">
-              Don't have an account? <a (click)="onSignUp()">SignUp</a>
-            </div>
-          </form>
-        </div>
+        <!-- Background blur overlay -->
+        <div *ngIf="showSignupForm" class="background-overlay"></div>
   
-        <!-- SignUp form (conditionally displayed) -->
-        <div  *ngIf="showSignupForm"  class="signup-form">
-          <h3>SignUp</h3>
+        <!-- SignUp form -->
+        <div *ngIf="showSignupForm" class="signup-form centered">
           <form [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit()">
+            <h3>SignUp</h3>
+  
             <div class="p-field-signup">
-              <label for="p-field-user">Full Name</label>
+              <label for="fullname">Full Name</label>
               <input pInputText id="fullname" formControlName="fullName" placeholder="Enter Full Name" />
+              <div *ngIf="signUpForm.get('fullName')?.touched && signUpForm.get('fullName')?.errors?.['pattern']" class="error-message">
+                Full name must contain only letters.
+              </div>
             </div>
-            <div class="p-field-user">
+  
+            <div class="p-field-signup">
               <label for="username">Username</label>
               <input pInputText id="username" formControlName="signUpUsername" placeholder="Enter Username" />
+              <div *ngIf="signUpForm.get('signUpUsername')?.touched && signUpForm.get('signUpUsername')?.errors?.['required']" class="error-message">
+                Username is required.
+              </div>
             </div>
-            <div class="p-field-user">
+  
+            <div class="p-field-signup">
               <label for="password">Password</label>
               <input pInputText id="password" type="password" formControlName="signUpPassword" placeholder="Enter Password" />
+              <div *ngIf="signUpForm.get('signUpPassword')?.touched && signUpForm.get('signUpPassword')?.errors?.['invalidPassword']" class="error-message">
+                Password must contain 1 capital, 1 lowercase, 1 special character, and 1 number (8-10 characters).
+              </div>
             </div>
-            <div class="p-field-user">
+  
+            <div class="p-field-signup">
               <label for="retypepassword">Re-type Password</label>
               <input pInputText id="retypepassword" type="password" formControlName="retypePassword" placeholder="Re-type Password" />
+              <div *ngIf="signUpForm.get('retypePassword')?.touched && signUpForm.hasError('passwordMismatch')" class="error-message">
+                Password does not match with re-typed password.
+              </div>
             </div>
-            <div class="p-field-user">
+  
+            <div class="p-field-signup">
               <label for="emailormobile">Email or Mobile Number</label>
               <input pInputText id="emailormobile" formControlName="emailOrMobile" placeholder="Enter Email or Mobile" />
+              <div *ngIf="signUpForm.get('emailOrMobile')?.touched && signUpForm.get('emailOrMobile')?.errors?.['invalidUsername']" class="error-message">
+                Must be a valid email or a 10-digit mobile number.
+              </div>
             </div>
+  
             <div class="signup-buttons">
-              <p-button label="Submit" type="submit"></p-button>
-              <p-button label="Cancel" type="button" (click)="cancelSignup()"></p-button>
+              <p-button  class="submit-sign-btn" label="Submit" type="submit"></p-button>
+              <p-button class="cancel-sign-btn"  label="Cancel" type="button" (click)="cancelSignup()"></p-button>
             </div>
           </form>
         </div>

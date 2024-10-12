@@ -1,0 +1,105 @@
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0rem;
+    
+    img {
+      width: 50%;
+      height: 12rem;
+      object-fit: cover;
+    }
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #2f4f4f;
+    flex-wrap: wrap;  /* Allow wrapping on smaller screens */
+  }
+  
+  .p-multiSelect,
+  .p-calendar {
+    width: 16rem;  /* Adjusted for consistent width */
+    margin-right: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .p-calendar input {
+    width: 100%;  /* Make input field full width */
+  }
+  
+  .p-calendar .p-calendar-trigger {
+    padding-left: 2rem; /* Adjust padding for calendar icon */
+  }
+  
+  /* General adjustments to ensure equal spacing */
+  .p-multiselect-header .p-inputtext, 
+  .p-calendar input {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  
+  .p-multiselect-panel,
+  .p-calendar-panel {
+    max-height: 25rem;
+    width: 20rem !important;  /* Keep consistent width for dropdown panels */
+    overflow-y: auto;
+  }
+  
+  /* Ensuring the entire search container remains responsive */
+  @media (max-width: 1200px) {
+    .search-container {
+      flex-direction: column;  /* Stack the filters vertically on smaller screens */
+      align-items: flex-start;
+    }
+  
+    .p-multiSelect, .p-calendar, p-button {
+      width: 100%;  /* Full width for small screens */
+      margin-bottom: 1rem;  /* Space between stacked elements */
+    }
+  }
+  
+  /* explore.component.scss */
+
+.search-results-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .result-header, .result-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 0;
+  }
+  
+  .result-header div, .result-row div {
+    flex: 1;
+    text-align: left;
+    padding: 0 10px;
+  }
+  
+  .result-header {
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+  }
+  .search-results-section .result-row {
+    background-color: #f5f5f5; /* Custom color for search results */
+    margin-bottom: 10px;
+  }
+  
+  .random-results-section .result-row {
+    background-color: #e0e0e0; /* Custom color for random results */
+    margin-top: 20px; /* Adds space to differentiate */
+  }
+  
+  .random-header {
+    font-weight: bold;
+    margin-top: 30px;
+  }
+  
