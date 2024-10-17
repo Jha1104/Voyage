@@ -211,3 +211,37 @@ export const STATE_OPTIONS = [
         packageRange: string;
         numberOfDays: number;
       }
+
+
+      export const TREE_SELECT_OPTIONS = [
+        {
+          label: 'Maharashtra', 
+          data: 'Maharashtra',
+          children: [
+            { label: 'Mumbai', data: 'Mumbai' },
+            { label: 'Pune', data: 'Pune' },
+            { label: 'Nagpur', data: 'Nagpur' }
+          ]
+        },
+        {
+          label: 'Karnataka', 
+          data: 'Karnataka',
+          children: [
+            { label: 'Bangalore', data: 'Bangalore' },
+            { label: 'Mysore', data: 'Mysore' },
+            { label: 'Mangalore', data: 'Mangalore' }
+          ]
+        },
+        {
+          label: 'Rajasthan',
+          data: 'Rajasthan',
+          children: [
+            { label: 'Jaipur', data: 'Jaipur' },
+            { label: 'Udaipur', data: 'Udaipur' },
+            { label: 'Jodhpur', data: 'Jodhpur' }
+          ]
+        }
+      ];
+      
+
+      

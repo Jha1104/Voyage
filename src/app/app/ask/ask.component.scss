@@ -1,0 +1,30 @@
+.ask-page {
+    margin: 0 4em;
+  
+    .header {
+      height: 5rem;
+      background-color: lightgrey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .search-section {
+      margin-top: 4rem; // Add some margin between header and search section
+      display: flex;
+      align-items: center; // Align items vertically
+      
+      .search-bar {
+        flex: 1;
+    margin-right: 9rem;
+    margin-left: 11rem;
+    padding: 13px;
+    border-radius: 17px;
+    border-width: 1px;
+
+      }
+  
+      
+    }
+  }
+  

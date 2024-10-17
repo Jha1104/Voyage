@@ -11,57 +11,64 @@
       object-fit: cover;
     }
   }
-  
-  .search-container {
+ .explore-row {
     display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    background-color: #2f4f4f;
-    flex-wrap: wrap;  /* Allow wrapping on smaller screens */
-  }
-  
-  .p-multiSelect,
-  .p-calendar {
-    width: 16rem;  /* Adjusted for consistent width */
-    margin-right: 1rem;
-    padding: 0 1rem;
-  }
-  
-  .p-calendar input {
-    width: 100%;  /* Make input field full width */
-  }
-  
-  .p-calendar .p-calendar-trigger {
-    padding-left: 2rem; /* Adjust padding for calendar icon */
-  }
-  
-  /* General adjustments to ensure equal spacing */
-  .p-multiselect-header .p-inputtext, 
-  .p-calendar input {
+    justify-content: space-between; /* Equal spacing between elements */
+    align-items: center;
     width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
+    padding: 1rem 0;
+    background-color: dimgray;
+
+     ::ng-deep {
+
+      .globalTreeSelect{
+        margin-left: 2rem;
+        max-width: 11rem;
+        width: 100%;
+        overflow: visible;
+      
+       
+  .p-treeselect-label-container{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 9rem;
   }
-  
-  .p-multiselect-panel,
-  .p-calendar-panel {
-    max-height: 25rem;
-    width: 20rem !important;  /* Keep consistent width for dropdown panels */
-    overflow-y: auto;
-  }
-  
-  /* Ensuring the entire search container remains responsive */
-  @media (max-width: 1200px) {
-    .search-container {
-      flex-direction: column;  /* Stack the filters vertically on smaller screens */
-      align-items: flex-start;
+      }
     }
+
+::ng-deep .p-multiselect{
+  max-width: 10rem;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+::ng-deep .p-treeselect-panel {
+    width: 300px !important;        /* Ensure dropdown panel width is fixed */
+    padding: 10px;
+}
+
+.p-button {
+    margin-right: 10px;
+   
+}
+::ng-deep .search-btn .p-button{
+  background-color: rgba(5, 107, 5, 0.842);
+  border-color: darkgreen;
+  border: 0px;
   
-    .p-multiSelect, .p-calendar, p-button {
-      width: 100%;  /* Full width for small screens */
-      margin-bottom: 1rem;  /* Space between stacked elements */
-    }
-  }
+}
+::ng-deep .cancel-btn .p-button {
+  margin-right: 2rem !important;
+  background-color: red;
+  border-color: red;
+}
+.p-button:last-child {
+    margin-right: 2rem;
+}
+
+
+}
+
   
   /* explore.component.scss */
 
@@ -76,6 +83,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
     padding: 5px 0;
+    align-items: center;
   }
   
   .result-header div, .result-row div {
@@ -84,22 +92,38 @@
     padding: 0 10px;
   }
   
-  .result-header {
-    font-weight: bold;
-    border-bottom: 2px solid #ccc;
-  }
-  .search-results-section .result-row {
-    background-color: #f5f5f5; /* Custom color for search results */
-    margin-bottom: 10px;
-  }
-  
-  .random-results-section .result-row {
-    background-color: #e0e0e0; /* Custom color for random results */
-    margin-top: 20px; /* Adds space to differentiate */
-  }
-  
-  .random-header {
-    font-weight: bold;
-    margin-top: 30px;
-  }
-  
+  /* Add this new wrapper class to your CSS */
+
+.results-background {
+  position: relative;
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+/* Apply styles for the search results container */
+.search-results-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: relative; /* Ensure the content is positioned relative to this */
+  z-index: 1; /* Keep text above the background */
+}
+
+/* Create a pseudo-element for the background */
+.results-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/images/photo8.png");
+  /* Replace with your image path */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  filter: blur(8px); /* Adjust the blur effect */
+  opacity: 0.6; /* Adjust the opacity for transparency */
+  z-index: 0; /* Set below the text */
+}
+.search-results-section{
+  margin: 2rem;
+}

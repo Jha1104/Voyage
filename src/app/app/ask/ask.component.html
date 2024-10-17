@@ -1,1 +1,15 @@
-<p>ask works!</p>
+<div class="ask-page">
+    <!-- Header -->
+    <div class="header">
+      <h1>How can we help you?</h1>
+    </div>
+  
+    <!-- Search Bar -->
+    <div class="search-section">
+        <input type="text"
+  formControlName="askSearch"
+  placeholder="Type your question here..."
+  class="search-bar" >
+        <p-button label="Search" (click)="onSearch()" class="search-btn"></p-button>
+    </div>
+</div>

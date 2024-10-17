@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputGroupModule } from 'primeng/inputgroup'; 
+import { ButtonModule } from 'primeng/button'; 
 @Component({
   selector: 'app-ask',
   standalone: true,
-  imports: [],
+  imports: [InputTextModule, InputGroupModule, ButtonModule ], // Ensure these modules are imported
   templateUrl: './ask.component.html',
-  styleUrl: './ask.component.scss'
+  styleUrls: ['./ask.component.scss']
 })
-export class AskComponent {
+export class AskComponent implements OnInit {
+  
 
+ 
+
+  ngOnInit() { }
+
+  onSearch() {
+   
+}
 }
