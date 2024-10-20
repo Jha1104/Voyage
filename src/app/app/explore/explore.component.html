@@ -2,24 +2,95 @@
   <img src="assets/images/photo7.jfif" alt="Header Image" class="header-img">
   <img src="assets/images/photo6.jfif" alt="Header Image" class="header-img">
 </div>
-<div class="explore-row">
-  <p-treeSelect [options]="treeOptions" [(ngModel)]="selectedOwnState" placeholder="Select State/City" [filter]="true"
-    selectionMode="checkbox" [showClear]="true" display="chip" class="globalTreeSelect"></p-treeSelect>
 
-    <p-multiSelect [options]="stateOptions" placeholder="State of Travel" display="chip"
-    [showClear]="true" [(ngModel)]="selectedState" (ngModelChange)="onStateChange($event)"></p-multiSelect>
-  
-  <p-multiSelect [options]="placeOptions" placeholder="Places to Visit" display="chip"
-    [showClear]="true" optionValue="value"  [(ngModel)]="selectedPlace"></p-multiSelect>
-  <p-multiSelect [options]="transportOptions" placeholder="Select Transport" display="chip"
-    [showClear]="true" optionValue="value" [(ngModel)]="selectedTransport" ></p-multiSelect>
-  <p-multiSelect [options]="packageOptions" placeholder="Select Package" display="chip"
-    [showClear]="true" optionValue="value" [(ngModel)]="selectedPackage"></p-multiSelect>
-  <p-calendar [(ngModel)]="selectedDateRange" selectionMode="range" placeholder="Select Date"
-    [showClear]="true"></p-calendar>
-  <p-button type="button" label="Search" class="search-btn" (click)="onSearch()"></p-button>
-  <p-button type="button" label="Cancel" class="cancel-btn" (click)="onCancel()"></p-button>
+<div class="explore-row">
+
+  <!-- TreeSelect with pTooltip applied to the div -->
+  <div pTooltip="{{ getTooltipText(selectedOwnState) }}" tooltipPosition="top">
+    <p-treeSelect [options]="treeOptions" 
+                  [(ngModel)]="selectedOwnState" 
+                  placeholder="Select State/City" 
+                  [filter]="true"
+                  selectionMode="checkbox" 
+                  [showClear]="true" 
+                  display="chip" 
+                  class="globalTreeSelect">
+    </p-treeSelect>
+  </div>
+
+  <!-- MultiSelect for State with pTooltip -->
+  <p-multiSelect [options]="stateOptions" 
+                 placeholder="State of Travel" 
+                 display="chip"
+                 [showClear]="true" 
+                 [(ngModel)]="selectedState" 
+                 (ngModelChange)="onStateChange($event)" 
+                 pTooltip="{{ getTooltipText(selectedState) }}" 
+                 tooltipPosition="top">
+  </p-multiSelect>
+
+  <!-- MultiSelect for Place Options with pTooltip -->
+  <p-multiSelect [options]="placeOptions" 
+                 placeholder="Places to Visit" 
+                 display="chip"
+                 [showClear]="true" 
+                 optionValue="value"  
+                 [(ngModel)]="selectedPlace" 
+                 pTooltip="{{ getTooltipText(selectedPlace) }}" 
+                 tooltipPosition="top">
+  </p-multiSelect>
+
+  <!-- MultiSelect for Transport Options with pTooltip -->
+  <p-multiSelect [options]="transportOptions" 
+                 placeholder="Select Transport" 
+                 display="chip"
+                 [showClear]="true" 
+                 optionValue="value" 
+                 [(ngModel)]="selectedTransport" 
+                 pTooltip="{{ getTooltipText(selectedTransport) }}" 
+                 tooltipPosition="top">
+  </p-multiSelect>
+
+  <!-- MultiSelect for Package Options with pTooltip -->
+  <p-multiSelect [options]="packageOptions" 
+                 placeholder="Select Package" 
+                 display="chip"
+                 [showClear]="true" 
+                 optionValue="value" 
+                 [(ngModel)]="selectedPackage"
+                 pTooltip="{{ getTooltipText(selectedPackage) }}" 
+                 tooltipPosition="top">
+  </p-multiSelect>
+
+  <!-- Calendar with pTooltip applied to the div -->
+  <div pTooltip="{{ getTooltipTextDates(selectedDateRange) }}" tooltipPosition="top">
+    <p-calendar 
+      [(ngModel)]="selectedDateRange" 
+      selectionMode="range" 
+      placeholder="Select Date"
+      [showClear]="true"
+      [minDate]="minSelectableDate">
+    </p-calendar>
+  </div>
+
+  <p-button type="button" 
+            label="Search" 
+            class="search-btn" 
+            (click)="onSearch()">
+  </p-button>
+
+  <p-button type="button" 
+            label="Cancel" 
+            class="cancel-btn" 
+            (click)="onCancel()">
+  </p-button>
+
 </div>
+
+
+
+
+
 
 
 

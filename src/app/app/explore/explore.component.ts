@@ -7,10 +7,12 @@ import { CalendarModule } from 'primeng/calendar';
 import { STATE_OPTIONS, PLACE_OPTIONS, TRANSPORT_OPTIONS, PACKAGE_OPTIONS} from './explore.constant';
 import { TreeSelectModule } from 'primeng/treeselect'; // Add this import
 import { TreeNode } from 'primeng/api';
+import { TooltipModule } from 'primeng/tooltip';
+
 @Component({
   selector: 'app-explore',
   standalone: true,
-  imports: [CommonModule, MultiSelectModule, ButtonModule, FormsModule, CalendarModule, TreeSelectModule],
+  imports: [CommonModule, MultiSelectModule, ButtonModule, FormsModule, CalendarModule, TreeSelectModule,TooltipModule],
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss']
 })
@@ -30,6 +32,7 @@ export class ExploreComponent implements OnInit{
   randomResults: any[] = [];
   selectedDateRange: Date[] | null = null; // For the combined check-in and check-out
   selectedCategory: any[] = []; // For the p-treeSelect field
+  minSelectableDate: Date = new Date(); // Sets the minimum date to the current date
   
    // Add this for the tree select options (you can later update the options)
    treeOptions: TreeNode[] = [
@@ -95,6 +98,13 @@ generateRandomResults(): void {
       placeToVisit: 'Palolem Beach',
       transportMode: 'Train',
       packageRange: 'Rs 10,000 - Rs 15,000',
+      numberOfDays: 4,
+    },
+    {
+      currentLocation: 'Unknown Location, Bihar',
+      placeToVisit: 'Patna',
+      transportMode: 'Train',
+      packageRange: 'Rs 20,000 - Rs 25,000',
       numberOfDays: 4,
     },
     // Add more random results here
@@ -196,6 +206,52 @@ onStateChange(selectedStates: string[] | null): void {
   
     // Step 7: Push the formatted result into the searchResults array
     this.searchResults = [result]; // Replace previous results with new search result
+  }
+  
+  getTooltipText(selectedValues: any[] | null): string {
+    if (!selectedValues || selectedValues.length === 0) {
+      return 'No items selected';
+    }
+  
+    // Handling for p-treeSelect, which may have more complex objects
+    if (selectedValues[0] && typeof selectedValues[0] === 'object') {
+      const selectedLabels = selectedValues.map(item => item.label); // Assuming treeSelect uses 'label' property for display
+      if (selectedLabels.length > 5) {
+        return selectedLabels.slice(0, 5).join(', ') + `, and ${selectedLabels.length - 5} more`;
+      } else {
+        return selectedLabels.join(', ');
+      }
+    }
+  
+    // Default case for other select components
+    if (selectedValues.length > 5) {
+      return selectedValues.slice(0, 5).join(', ') + `, and ${selectedValues.length - 5} more`;
+    } else {
+      return selectedValues.join(', ');
+    }
+  }
+  
+  getTooltipTextDates(selectedDateRange: Date[] | null): string {
+    if (!selectedDateRange || selectedDateRange.length === 0) {
+      return 'Please select a date range';
+    }
+    
+    const formatDate = (date: Date) => {
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    };
+
+    if (selectedDateRange.length === 2) {
+      // Format the start and end date
+      const startDate = formatDate(selectedDateRange[0]);
+      const endDate = formatDate(selectedDateRange[1]);
+      return `${startDate} - ${endDate}`;
+    } else {
+      // If only one date is selected (incomplete range)
+      return formatDate(selectedDateRange[0]);
+    }
   }
   
   

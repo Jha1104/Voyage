@@ -1,15 +1,30 @@
 <div class="ask-page">
-    <!-- Header -->
-    <div class="header">
-      <h1>How can we help you?</h1>
+  <!-- Header -->
+  <div class="header">
+    <h1>How can we help you?</h1>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-section">
+    <input #searchInput type="text" placeholder="Type your question here..." class="search-bar" (input)="onSearch(searchInput.value)" />
+    <p-button label="Search" class="search-btn"></p-button>
+    <div class="tooltip" [ngClass]="{'tooltip-visible': showTooltip}">Please enter 3 characters</div>
+  </div>
+
+  <!-- Card Section -->
+  <div class="card-section">
+    <div 
+      *ngFor="let card of cards" 
+      class="card" 
+      [ngClass]="{'blurred': card.isBlurred, 'highlight': card.isHighlighted}"
+    >
+      <h3>{{ card.title }}</h3>
+      <ul>
+        <li *ngFor="let item of card.items">
+          <a href="#">{{ item }}</a> <!-- Wrap items in anchor tags -->
+        </li>
+      </ul>
     </div>
+  </div>
   
-    <!-- Search Bar -->
-    <div class="search-section">
-        <input type="text"
-  formControlName="askSearch"
-  placeholder="Type your question here..."
-  class="search-bar" >
-        <p-button label="Search" (click)="onSearch()" class="search-btn"></p-button>
-    </div>
 </div>

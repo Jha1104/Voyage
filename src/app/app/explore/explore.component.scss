@@ -36,6 +36,11 @@
       }
     }
 
+    ::ng-deep .p-tooltip {
+      background-color: white;
+      color: darkgrey;
+    }
+    
 ::ng-deep .p-multiselect{
   max-width: 10rem;
   text-overflow: ellipsis;
